@@ -1,0 +1,303 @@
+/* =========================================
+   AVANT-GARDE / EDITORIAL DARK THEME
+   ========================================= */
+
+:root {
+    --bg-pure: #000000;
+    --bg-surface: #0a0a0a;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --font-mono: 'Space Mono', monospace; /* For details, nav, small text */
+    --font-serif: 'Playfair Display', serif; /* For the elegant "Creative" text */
+    --font-bold: 'Oswald', sans-serif; /* For the massive "DESIGNER" text */
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    cursor: crosshair; /* Adds to the experimental tech vibe */
+}
+
+body { 
+    font-family: var(--font-mono); 
+    background-color: var(--bg-pure); 
+    color: var(--text-main); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    font-size: 14px;
+}
+
+html { scroll-behavior: smooth; }
+
+/* --- SPATIAL NAVIGATION --- */
+/* Spreading the nav to the edges like a HUD (Heads Up Display) */
+.navbar { 
+    position: fixed; 
+    top: 0; left: 0; width: 100%;
+    padding: 2rem 3rem; 
+    z-index: 1000; 
+    background: transparent;
+}
+
+nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+}
+
+.logo { 
+    font-family: var(--font-bold);
+    font-size: 1.2rem; 
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.nav-links { 
+    display: flex; 
+    flex-direction: column; /* Stacks links vertically like the reference */
+    gap: 0.5rem; 
+    list-style: none; 
+    text-align: right;
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-size: 0.85rem; 
+    text-transform: uppercase;
+    transition: 0.3s ease;
+    letter-spacing: 1px;
+}
+.nav-links a:hover { color: var(--text-main); letter-spacing: 2px;}
+
+/* --- GLOBALS --- */
+.section { padding: 8rem 5%; max-width: 1400px; margin: 0 auto; position: relative; }
+
+.section-title { 
+    font-family: var(--font-bold);
+    font-size: 4rem; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem; 
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+}
+
+.section-subtitle { 
+    font-family: var(--font-mono);
+    font-size: 0.9rem; 
+    color: var(--text-muted);
+    margin-bottom: 4rem; 
+}
+
+/* --- HERO SECTION (The Avant-Garde Split Layout) --- */
+.hero { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    min-height: 100vh; 
+    padding-top: 10vh;
+    position: relative;
+}
+
+.hero-text { flex: 1; z-index: 2; }
+
+/* The Elegant + Brutal Typography Mix */
+.hero-text h1 { display: flex; flex-direction: column; }
+
+.hero-text h1 .cursive {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 6rem;
+    font-weight: 400;
+    line-height: 0.8;
+    color: #e0e0e0;
+    margin-left: -5px;
+}
+
+.hero-text h1 .bold-caps {
+    font-family: var(--font-bold);
+    font-size: 7rem;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: var(--text-main);
+}
+
+.subtitle { 
+    color: var(--text-muted); 
+    font-size: 0.85rem; 
+    margin-top: 2rem; 
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    max-width: 300px;
+}
+
+/* --- THE CENTER PIECE: REFLECTIVE PHOTO --- */
+.hero-image { 
+    flex: 1; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.profile-photo { 
+    width: 320px; 
+    height: 320px; 
+    object-fit: cover; 
+    border-radius: 50%; /* Keeps it a sphere like the reference */
+    filter: contrast(1.1) brightness(0.9) grayscale(20%); /* Moody grading */
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    
+    /* The Magic Wet-Floor Reflection */
+    -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, rgba(0,0,0,0.4));
+    
+    /* Slow Cinematic Floating Animation */
+    animation: cinematicFloat 8s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicFloat {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-20px) scale(1.02); }
+}
+
+/* Side Bio (Like the right side of the reference) */
+.bio-box { 
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 280px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: justify;
+    z-index: 2;
+}
+.bio-box strong { color: var(--text-main); font-weight: normal; border-bottom: 1px solid var(--text-main); }
+
+/* --- MY WORK (Projects) --- */
+.project-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 1px; /* Creates ultra-thin grid lines */
+    background: #0a0a0a; /* Grid line color */
+    border: 1px solid #333;
+}
+
+.project-card { 
+    background: var(--bg-pure); 
+    padding: 2rem;
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover { background: var(--bg-surface); }
+
+/* 100% DESIGN VISIBILITY */
+.project-img-box {
+    width: 100%;
+    height: 350px; 
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.expandable-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; /* PERFECTLY fits your art without cropping */
+    filter: grayscale(80%); /* Starts desaturated to fit the dark theme */
+    transition: 0.5s ease;
+}
+
+.project-card:hover .expandable-img { 
+    filter: grayscale(0%); /* Bursts into full color on hover! */
+    transform: scale(1.05); 
+}
+
+.project-info { text-align: left; }
+.project-info h3 { 
+    font-family: var(--font-bold);
+    font-size: 1.5rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- SKILLS & ABOUT (Minimalist Data Vibe) --- */
+.skills-grid, .about-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 4rem; 
+}
+
+.skill-card h3, .about-card h3 { 
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 2rem; 
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #121212;
+    padding-bottom: 0.5rem;
+}
+
+.tags { display: flex; flex-direction: column; gap: 0.5rem; }
+.tags span { 
+    font-size: 0.85rem; 
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.tags span:hover { color: var(--text-main); padding-left: 10px; border-left: 1px solid var(--text-main); }
+
+/* --- CONTACT & FOOTER --- */
+.contact-grid { 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-card { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    font-size: 2rem;
+    font-family: var(--font-bold);
+    text-transform: uppercase;
+    transition: 0.3s ease; 
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-card:hover { 
+    color: var(--text-main); 
+    transform: translateX(20px); 
+}
+
+.contact-card i { font-size: 1.5rem; }
+
+footer { 
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 3rem; 
+    border-top: 1px solid #222;
+    color: var(--text-muted); 
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.98); }
+.modal-content { margin: auto; display: block; max-width: 90%; max-height: 90vh; position: relative; top: 50%; transform: translateY(-50%); object-fit: contain; }
+.close-btn { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; font-family: var(--font-mono);}
